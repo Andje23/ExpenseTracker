@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icons/post_add_white_24dp.svg</file>
+  </qresource>
+</RCC>
