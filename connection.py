@@ -37,3 +37,8 @@ class Data:
     def add_new_transaction_query(self, date, category, description, balance, status):
         sql_query = "INSERT INTO expenses (Data, Category, Description, Balance, Status) VALUES (?, ?, ?, ?, ?)"
         self.execute_query_with_params(sql_query, [date, category, description, balance, status])
+        
+    
+    def update_transaction_query(self, date, category, description, balance, status, id):
+        sql_query = "UPDATE expenses SET Date=?, Category=?, Description=?, Balance=?, Status=?, WHERE ID=?"
+        self.execute_query_with_params(sql_query, [date, category, description, balance, status, id])
