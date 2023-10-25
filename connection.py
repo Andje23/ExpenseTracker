@@ -42,3 +42,8 @@ class Data:
     def update_transaction_query(self, date, category, description, balance, status, id):
         sql_query = "UPDATE expenses SET Date=?, Category=?, Description=?, Balance=?, Status=?, WHERE ID=?"
         self.execute_query_with_params(sql_query, [date, category, description, balance, status, id])
+        
+    
+    def delete_transaction_query(self, id):
+        sql_query = "DELETE FROM expenses WHERE ID=?"
+        self.execute_query_with_params(sql_query, [id])
