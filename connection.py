@@ -6,6 +6,7 @@ class Data:
     
     def __init__(self) -> None:
         super(Data, self).__init__()
+        self.create_connection()
         
         
     def create_connection(self):
