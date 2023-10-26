@@ -33,6 +33,8 @@ class Data:
         
         query.exec()
         
+        return query
+        
     
     def add_new_transaction_query(self, date, category, description, balance, status):
         sql_query = "INSERT INTO expenses (Data, Category, Description, Balance, Status) VALUES (?, ?, ?, ?, ?)"
