@@ -346,9 +346,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.btn_edit_transaction)
 
-        self.pushButton_3 = QPushButton(self.centralwidget)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setStyleSheet(u"QPushButton{\n"
+        self.btn_delete_transaction = QPushButton(self.centralwidget)
+        self.btn_delete_transaction.setObjectName(u"pushButton_3")
+        self.btn_delete_transaction.setStyleSheet(u"QPushButton{\n"
 "color: white;\n"
 "background-color: rgba(255, 255,255, 30);\n"
 "border: 1px solid rgba(255, 255, 255, 40);\n"
@@ -367,10 +367,10 @@ class Ui_MainWindow(object):
 "")
         icon2 = QIcon()
         icon2.addFile(u":/icon/icons/delete_white_24dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_3.setIcon(icon2)
-        self.pushButton_3.setIconSize(QSize(24, 24))
+        self.btn_delete_transaction.setIcon(icon2)
+        self.btn_delete_transaction.setIconSize(QSize(24, 24))
 
-        self.horizontalLayout_8.addWidget(self.pushButton_3)
+        self.horizontalLayout_8.addWidget(self.btn_delete_transaction)
 
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_8)
@@ -441,6 +441,6 @@ class Ui_MainWindow(object):
         self.balance_others.setText(QCoreApplication.translate("MainWindow", u"1000 \u0440\u0443\u0431", None))
         self.btn_new_transaction.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u0430\u044f \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044f", None))
         self.btn_edit_transaction.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044e", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044e", None))
+        self.btn_delete_transaction.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044e", None))
     # retranslateUi
 

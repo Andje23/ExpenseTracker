@@ -4,6 +4,7 @@ from PySide6 import QtWidgets
 from PySide6.QtWidgets import QApplication, QMainWindow
 from ui_main import Ui_MainWindow
 from new_transaction import Ui_Dialog
+from PySide6.QtSql import QSqlTableModel
 
 from connection import Data
 
@@ -14,12 +15,31 @@ class ExpenseTracker(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.connection = Data()
+        self.view_data()
+        
+        self.ui.btn_new_transaction.clicked.connect(self.open_new_transaction_window)
+        self.ui.btn_edit_transaction.clicked.connect(self.open_new_transaction_window)
+        self.ui.btn_delete_transaction.clicked.connect(self.delete_current_transaction)
+        
+        
+    def view_data(self):
+        self.model = QSqlTableModel(self)
+        self.model.setTable('expenses')
+        self.model.select()
+        self.ui.tableView.setModel(self.model)
         
         
     def open_new_transaction_window(self):
         self.new_window = QtWidgets.QDialog()
         self.ui_window.setupUi(self.new_window)
         self.new_window.show()
+        
+        sender = self.sender()
+        
+        if sender.text() == "Новая транзакция":
+            self.ui_window.btn_new_transaction.cliked.connect(self.add_new_transaction)
+        else:
+            self.ui_window.btn_new_transaction.clicked.connect(self.edit_current_transaction)
         
         
     def add_new_transaction(self):
@@ -31,6 +51,7 @@ class ExpenseTracker(QMainWindow):
         
         self.connection.add_new_transaction_query(date, category, description, balance, status)
         
+        self.view_data()
         self.new_window.close()
         
         
@@ -46,6 +67,7 @@ class ExpenseTracker(QMainWindow):
         
         self.connection.update_transaction_query(date, category, description, balance, status, id)
         
+        self.view_data()
         self.new_window.close()
         
     
@@ -54,6 +76,8 @@ class ExpenseTracker(QMainWindow):
         id = str(self.ui.tableView.model().dat(index))
         
         self.connection.delete_transaction_query(id)
+        
+        self.view_data()
         
         
 if __name__ == "__main__":
