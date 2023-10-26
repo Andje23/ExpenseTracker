@@ -34,6 +34,21 @@ class ExpenseTracker(QMainWindow):
         self.new_window.close()
         
         
+    def edit_current_transaction(self):
+        index = self.ui.tableView.selectedIndexes()[0]
+        id = str(self.ui.tableView.model().dat(index))
+        
+        date = self.ui_window.dateEdit.text()
+        category = self.ui_window.cb_choose_category.currentText()
+        description = self.ui_windows.le_description.text()
+        balance = self.ui.window.le_balance.text()
+        status = self.ui_window.cb_status.cureentText()
+        
+        self.connection.update_transaction_query(date, category, description, balance, status, id)
+        
+        self.new_window.close()
+        
+        
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = ExpenseTracker()
