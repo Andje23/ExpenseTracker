@@ -80,3 +80,7 @@ class Data:
     
     def total_groceries(self):
         return self.get_total(column="Balance", filter="Category", value="Grocery")
+    
+    
+    def total_entertaiment(self):
+        return self.get_total(column="Balance", filter="Category", value="Entertainment")
