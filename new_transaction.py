@@ -18,127 +18,144 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QComboBox, QDateEdit,
     QDialog, QFrame, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QVBoxLayout, QWidget)
-import res-new-window-rc_rc
+import res
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(387, 320)
-        Dialog.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(81, 0, 135, 255), stop:0.427447 rgba(41, 61, 132, 235), stop:1 rgba(155, 79, 165, 255));\n"
-"font-famaly: Noto Sans SC;")
-        self.verticalLayout_2 = QVBoxLayout(Dialog)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.frame = QFrame(Dialog)
-        self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"background-color: rgba(255, 255, 255, 30);\n"
-"border: 1px solid rgba(255, 255, 255, 40);\n"
-"border-radius: 7px;")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout = QVBoxLayout(self.frame)
+        Dialog.resize(300, 331)
+        Dialog.setStyleSheet(u"font-family: Noto Sans SC;\n"
+"background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(81, 0, 135, 255), stop:0.427447 rgba(41, 61, 132, 235), stop:1 rgba(155, 79, 165, 255));")
+        self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.lbl_new_transcription = QLabel(self.frame)
-        self.lbl_new_transcription.setObjectName(u"lbl_new_transcription")
-        self.lbl_new_transcription.setStyleSheet(u"color: white;\n"
-"font-size: 30pt;\n"
+        self.new_transaction = QFrame(Dialog)
+        self.new_transaction.setObjectName(u"new_transaction")
+        self.new_transaction.setStyleSheet(u"background-color: rgba(255, 255, 255, 30); \n"
+"border: 1px solid rgba(255,255,255,40);\n"
+"border-radius: 7px;")
+        self.new_transaction.setFrameShape(QFrame.NoFrame)
+        self.new_transaction.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_21 = QVBoxLayout(self.new_transaction)
+#ifndef Q_OS_MAC
+        self.verticalLayout_21.setSpacing(-1)
+#endif
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.verticalLayout_21.setContentsMargins(12, 12, 12, 12)
+        self.lbl_new_transaction = QLabel(self.new_transaction)
+        self.lbl_new_transaction.setObjectName(u"lbl_new_transaction")
+        font = QFont()
+        font.setFamilies([u"Noto Sans SC"])
+        font.setPointSize(20)
+        font.setBold(True)
+        self.lbl_new_transaction.setFont(font)
+        self.lbl_new_transaction.setStyleSheet(u"color: white;\n"
+"font-weight: bold;\n"
+"font-size: 20pt;\n"
 "background-color: none;\n"
 "border: none;")
-        self.lbl_new_transcription.setAlignment(Qt.AlignCenter)
+        self.lbl_new_transaction.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout.addWidget(self.lbl_new_transcription)
+        self.verticalLayout_21.addWidget(self.lbl_new_transaction)
 
-        self.cb_category = QComboBox(self.frame)
-        self.cb_category.addItem("")
-        self.cb_category.addItem("")
-        self.cb_category.addItem("")
-        self.cb_category.addItem("")
-        self.cb_category.setObjectName(u"cb_category")
-        self.cb_category.setStyleSheet(u"QComboBox{\n"
-"font-size: 16px;\n"
+        self.cb_choose_category = QComboBox(self.new_transaction)
+        self.cb_choose_category.addItem("")
+        self.cb_choose_category.addItem("")
+        self.cb_choose_category.addItem("")
+        self.cb_choose_category.addItem("")
+        self.cb_choose_category.addItem("")
+        self.cb_choose_category.setObjectName(u"cb_choose_category")
+        self.cb_choose_category.setStyleSheet(u"QComboBox {\n"
+"font-size: 16pt;\n"
 "color: white;\n"
 "}\n"
 "\n"
-"QComboBox:item{\n"
-"color :black;\n"
+"QComboBox:item {\n"
+"    color: black;\n"
 "}")
 
-        self.verticalLayout.addWidget(self.cb_category)
+        self.verticalLayout_21.addWidget(self.cb_choose_category)
 
-        self.data = QDateEdit(self.frame)
-        self.data.setObjectName(u"data")
-        self.data.setStyleSheet(u"font-size: 16pt;\n"
+        self.dateEdit = QDateEdit(self.new_transaction)
+        self.dateEdit.setObjectName(u"dateEdit")
+        self.dateEdit.setStyleSheet(u"font-size: 16pt;\n"
 "color: white;\n"
-"padding-text: 10px;")
-        self.data.setButtonSymbols(QAbstractSpinBox.NoButtons)
-        self.data.setDate(QDate(2023, 6, 25))
+"padding-left: 10px;")
+        self.dateEdit.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.dateEdit.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.dateEdit.setDateTime(QDateTime(QDate(2022, 12, 31), QTime(22, 0, 0)))
+        self.dateEdit.setCurrentSectionIndex(0)
 
-        self.verticalLayout.addWidget(self.data)
+        self.verticalLayout_21.addWidget(self.dateEdit)
 
-        self.le_description = QLineEdit(self.frame)
+        self.le_description = QLineEdit(self.new_transaction)
         self.le_description.setObjectName(u"le_description")
         self.le_description.setStyleSheet(u"font-size: 16pt;\n"
 "color: white;\n"
 "padding-left: 10px;")
+        self.le_description.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.verticalLayout.addWidget(self.le_description)
+        self.verticalLayout_21.addWidget(self.le_description)
 
-        self.le_balace = QLineEdit(self.frame)
-        self.le_balace.setObjectName(u"le_balace")
-        self.le_balace.setStyleSheet(u"font-size: 16pt;\n"
+        self.le_balance = QLineEdit(self.new_transaction)
+        self.le_balance.setObjectName(u"le_balance")
+        self.le_balance.setStyleSheet(u"font-size: 16pt;\n"
 "color: white;\n"
 "padding-left: 10px;")
+        self.le_balance.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.verticalLayout.addWidget(self.le_balace)
+        self.verticalLayout_21.addWidget(self.le_balance)
 
-        self.comboBox_2 = QComboBox(self.frame)
-        self.comboBox_2.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_2.setObjectName(u"comboBox_2")
-        self.comboBox_2.setStyleSheet(u"QComboBox{\n"
-"font-size: 16px;\n"
+        self.cb_status = QComboBox(self.new_transaction)
+        self.cb_status.addItem("")
+        self.cb_status.addItem("")
+        self.cb_status.setObjectName(u"cb_status")
+        self.cb_status.setStyleSheet(u"QComboBox {\n"
+"font-size: 16pt;\n"
 "color: white;\n"
 "}\n"
 "\n"
-"QComboBox:item{\n"
-"color :black;\n"
+"QComboBox:item {\n"
+"    color: black;\n"
 "}")
 
-        self.verticalLayout.addWidget(self.comboBox_2)
+        self.verticalLayout_21.addWidget(self.cb_status)
 
-        self.pushButton = QPushButton(self.frame)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setStyleSheet(u"QPushButton{\n"
-"color: white;\n"
-"background-color: rgba(255, 255,255, 30);\n"
-"border: 1px solid rgba(255, 255, 255, 40);\n"
-"border-radius: 7px;\n"
-"width: 230px;\n"
-"height: 50px;\n"
+        self.btn_new_transaction = QPushButton(self.new_transaction)
+        self.btn_new_transaction.setObjectName(u"btn_new_transaction")
+        self.btn_new_transaction.setMinimumSize(QSize(230, 50))
+        font1 = QFont()
+        font1.setFamilies([u"Noto Sans SC"])
+        font1.setBold(True)
+        self.btn_new_transaction.setFont(font1)
+        self.btn_new_transaction.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"     background-color:rgba(255,255,255,30);\n"
+"     border: 1px solid rgba(255,255,255,40);\n"
+"     border-radius:7px;\n"
+"width: 230;\n"
+"height: 50;\n"
 "}\n"
-"\n"
 "QPushButton:hover{\n"
-"background-color: rgba(255, 255,255, 60);\n"
+"background-color:rgba(255,255,255,30);\n"
 "}\n"
-"\n"
 "QPushButton:pressed{\n"
-"background-color: rgba(255, 255,255, 90);\n"
-"}\n"
-"")
+"background-color:rgba(255,255,255,70);\n"
+"}")
         icon = QIcon()
-        icon.addFile(u":/icon/icons/post_add_white_24dp.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QSize(24, 24))
+        icon.addFile(u":/icons/icons/post_add_white_24dp.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_new_transaction.setIcon(icon)
+        self.btn_new_transaction.setIconSize(QSize(24, 24))
 
-        self.verticalLayout.addWidget(self.pushButton)
+        self.verticalLayout_21.addWidget(self.btn_new_transaction)
 
 
-        self.verticalLayout_2.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.new_transaction)
 
 
         self.retranslateUi(Dialog)
 
-        self.cb_category.setCurrentIndex(-1)
+        self.cb_choose_category.setCurrentIndex(-1)
 
 
         QMetaObject.connectSlotsByName(Dialog)
@@ -146,18 +163,19 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.lbl_new_transcription.setText(QCoreApplication.translate("Dialog", u"\u041d\u043e\u0432\u0430\u044f \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044f", None))
-        self.cb_category.setItemText(0, QCoreApplication.translate("Dialog", u"\u041f\u0440\u043e\u0434\u043e\u0432\u043e\u043b\u044c\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0435 \u0442\u043e\u0432\u0430\u0440\u044b", None))
-        self.cb_category.setItemText(1, QCoreApplication.translate("Dialog", u"\u0420\u0430\u0437\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u0435", None))
-        self.cb_category.setItemText(2, QCoreApplication.translate("Dialog", u"\u0414\u0440\u0443\u0433\u043e\u0435", None))
-        self.cb_category.setItemText(3, QCoreApplication.translate("Dialog", u"\u0420\u0430\u0431\u043e\u0442\u0430", None))
+        self.lbl_new_transaction.setText(QCoreApplication.translate("Dialog", u"New transaction", None))
+        self.cb_choose_category.setItemText(0, QCoreApplication.translate("Dialog", u"Work", None))
+        self.cb_choose_category.setItemText(1, QCoreApplication.translate("Dialog", u"Auto", None))
+        self.cb_choose_category.setItemText(2, QCoreApplication.translate("Dialog", u"Other", None))
+        self.cb_choose_category.setItemText(3, QCoreApplication.translate("Dialog", u"Grocery", None))
+        self.cb_choose_category.setItemText(4, QCoreApplication.translate("Dialog", u"Entertainment", None))
 
-        self.cb_category.setPlaceholderText(QCoreApplication.translate("Dialog", u"\u0412\u044b\u0431\u0440\u0430\u043d\u043d\u0430\u044f \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f", None))
-        self.le_description.setPlaceholderText(QCoreApplication.translate("Dialog", u"\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435", None))
-        self.le_balace.setPlaceholderText(QCoreApplication.translate("Dialog", u"\u0411\u0430\u043b\u0430\u043d\u0441", None))
-        self.comboBox_2.setItemText(0, QCoreApplication.translate("Dialog", u"\u0414\u043e\u0445\u043e\u0434", None))
-        self.comboBox_2.setItemText(1, QCoreApplication.translate("Dialog", u"\u0420\u0430\u0441\u0445\u043e\u0434", None))
+        self.cb_choose_category.setPlaceholderText(QCoreApplication.translate("Dialog", u"Choose category", None))
+        self.le_description.setPlaceholderText(QCoreApplication.translate("Dialog", u"Description", None))
+        self.le_balance.setPlaceholderText(QCoreApplication.translate("Dialog", u"Balance", None))
+        self.cb_status.setItemText(0, QCoreApplication.translate("Dialog", u"Income", None))
+        self.cb_status.setItemText(1, QCoreApplication.translate("Dialog", u"Outcome", None))
 
-        self.pushButton.setText(QCoreApplication.translate("Dialog", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043d\u043e\u0432\u0443\u044e \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044e", None))
+        self.cb_status.setPlaceholderText(QCoreApplication.translate("Dialog", u"Choose status", None))
+        self.btn_new_transaction.setText(QCoreApplication.translate("Dialog", u"Save transaction", None))
     # retranslateUi
-
