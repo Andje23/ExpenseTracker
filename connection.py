@@ -64,3 +64,7 @@ class Data:
             return str(query.value(0)) + 'руб.'
         
         return '0'
+    
+    
+    def total_balance(self):
+        return self.get_total(column="Balance")
