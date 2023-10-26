@@ -68,3 +68,7 @@ class Data:
     
     def total_balance(self):
         return self.get_total(column="Balance")
+    
+    
+    def total_income(self):
+        return self.get_total(column="Balance", filter="Status", value="Income")
