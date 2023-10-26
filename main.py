@@ -48,6 +48,13 @@ class ExpenseTracker(QMainWindow):
         
         self.new_window.close()
         
+    
+    def delete_current_transaction(self):
+        index = self.ui.tableView.selectedIndexes()[0]
+        id = str(self.ui.tableView.model().dat(index))
+        
+        self.connection.delete_transaction_query(id)
+        
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
