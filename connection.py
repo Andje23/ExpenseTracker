@@ -76,3 +76,7 @@ class Data:
     
     def total_outcome(self):
         return self.get_total(column="Balance", filter="Status", value="Outcome")
+    
+    
+    def total_groceries(self):
+        return self.get_total(column="Balance", filter="Category", value="Grocery")
