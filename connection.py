@@ -47,3 +47,20 @@ class Data:
     def delete_transaction_query(self, id):
         sql_query = "DELETE FROM expenses WHERE ID=?"
         self.execute_query_with_params(sql_query, [id])
+        
+        
+    def get_total(self, column, filter=None, value=None):
+        sql_query = f"SELECT SUM ({column}) FROM expenses"
+        if filter is not None and value is not None:
+            sql_query += f"WHERE {filter} = ?"
+            
+        query_values = []
+        if value is not None:
+            query_values.append(value)
+        
+        query = self.execute_query_with_params(sql_query, query_values)
+        
+        if query.next():
+            return str(query.value(0)) + 'руб.'
+        
+        return '0'
